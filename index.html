@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Name Generator</title>
+    <link rel="stylesheet" href="namegen.css" type="text/css" />
+    <script src="Scripts/rng/rng.js"></script>
+    <script src="namegen.js"></script>
+    <script src="Scripts/jquery/jquery-2.1.1.min.js"></script>
+    <script src="namegenUI.js"></script>
+</head>
+<body>
+    <h2>Name Generator</h2>
+
+    <span>Generator :</span><select id="generator">
+      <option value="eliteStar">Star (Elite)</option>
+      <option value="markovCityFr">French City (Markov 4)</option>
+      <option value="markovCityGb">British City (Markov 4)</option>
+      <option value="markovFirstnameFr">French Firstname (Markov 3)</option>
+                          </select><br />
+    <br />
+    <span>Number of names :</span><input type="text" id="nbNames" /><br />
+    <br />
+    <input type="button" id="generate" value="Generate" /><br />
+    <br />
+    <div id="names"></div>
+</body>
+</html>
