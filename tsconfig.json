@@ -1,0 +1,15 @@
+// tsconfig.json
+
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "strictNullChecks": false,
+        "module": "none",
+        "target": "es5",
+        "sourceMap": false,
+        "outFile": "app.js"
+    },
+    "exclude": [
+        "data"
+    ]
+}
