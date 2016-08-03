@@ -7,9 +7,11 @@
         "module": "none",
         "target": "es5",
         "sourceMap": false,
-        "outFile": "app.js"
+        "sourceRoot": "src",
+        "outFile": "dist/app.js"
     },
     "exclude": [
+        "dist",
         "data"
     ]
 }
