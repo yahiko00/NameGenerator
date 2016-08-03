@@ -1,5 +1,8 @@
 // app.ts
 
+/// <reference path="randXorshift.ts" />
+/// <reference path="namegen.ts" />
+
 namespace App {
     export type GeneratorLabel = "eliteStar" | "markovCityFr" | "markovCityGb" | "markovFirstnameFr";
     export function isGeneratorLabel(label: string): label is GeneratorLabel {
