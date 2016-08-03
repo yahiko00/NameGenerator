@@ -1,4 +1,38 @@
+// randXorshift.ts
+var RNGLib;
+(function (RNGLib) {
+    var RandXorshift = (function () {
+        function RandXorshift(seed) {
+            if (seed === void 0) { seed = Date.now(); }
+            this.seedInit = seed;
+            this.seed = seed;
+            this.reset(seed);
+        }
+        // Xorshift algorithm
+        // See: https://github.com/StickyBeat/pseudo-random-generator-xor-shift
+        RandXorshift.prototype.rand = function () {
+            var t = (this.x ^ (this.x << 11)) & 0x7fffffff;
+            this.x = this.y;
+            this.y = this.z;
+            this.z = this.seed;
+            this.seed = (this.seed ^ (this.seed >> 19) ^ (t ^ (t >> 8)));
+            return this.seed / 2147483648.0;
+        }; // rand
+        RandXorshift.prototype.reset = function (seed) {
+            this.seed = seed ? seed : this.seedInit;
+            // Xorshift initialization
+            this.x = 123456789;
+            this.y = 362436069;
+            this.z = 521288629;
+            for (var i = 0; i < 14; i++)
+                this.rand(); // skip first random numbers which are not really random
+        }; // reset
+        return RandXorshift;
+    }());
+    RNGLib.RandXorshift = RandXorshift;
+})(RNGLib || (RNGLib = {}));
 // app.ts
+/// <reference path="randXorshift.ts" />
 var App;
 (function (App) {
     function isGeneratorLabel(label) {
@@ -176,39 +210,6 @@ var NameGenerator;
     }());
     NameGenerator.Markov = Markov; // Markov
 })(NameGenerator || (NameGenerator = {}));
-// randXorshift.ts
-var RNGLib;
-(function (RNGLib) {
-    var RandXorshift = (function () {
-        function RandXorshift(seed) {
-            if (seed === void 0) { seed = Date.now(); }
-            this.seedInit = seed;
-            this.seed = seed;
-            this.reset(seed);
-        }
-        // Xorshift algorithm
-        // See: https://github.com/StickyBeat/pseudo-random-generator-xor-shift
-        RandXorshift.prototype.rand = function () {
-            var t = (this.x ^ (this.x << 11)) & 0x7fffffff;
-            this.x = this.y;
-            this.y = this.z;
-            this.z = this.seed;
-            this.seed = (this.seed ^ (this.seed >> 19) ^ (t ^ (t >> 8)));
-            return this.seed / 2147483648.0;
-        }; // rand
-        RandXorshift.prototype.reset = function (seed) {
-            this.seed = seed ? seed : this.seedInit;
-            // Xorshift initialization
-            this.x = 123456789;
-            this.y = 362436069;
-            this.z = 521288629;
-            for (var i = 0; i < 14; i++)
-                this.rand(); // skip first random numbers which are not really random
-        }; // reset
-        return RandXorshift;
-    }());
-    RNGLib.RandXorshift = RandXorshift;
-})(RNGLib || (RNGLib = {}));
 // util.ts
 var Util;
 (function (Util) {
