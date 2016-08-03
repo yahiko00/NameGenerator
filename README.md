@@ -1,5 +1,6 @@
 # NameGenerator
 Random Names Generator in TypeScript (synchronous execution).
+
 Provided algorithms are: Elite and Markov chains.
 
 ## Live Demo
