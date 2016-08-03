@@ -5,7 +5,7 @@ namespace NameGenerator {
         randName(): string;
     } // NameGenerator
 
-    interface Transition {
+    interface MarkovTransitions {
         [x: string]: number;
     }
 
@@ -43,7 +43,7 @@ namespace NameGenerator {
         rng: RNGLib.RandXorshift;
         order: number; // order of the Markov chain
         database: string[];
-        transitions: Transition;
+        transitions: MarkovTransitions;
 
         constructor(rng: RNGLib.RandXorshift, database: string[], order: number) {
             this.rng = rng;
