@@ -6,8 +6,6 @@
         "strictNullChecks": false,
         "module": "none",
         "target": "es5",
-        "sourceMap": false,
-        "sourceRoot": "src",
         "outFile": "dist/app.js"
     },
     "exclude": [
